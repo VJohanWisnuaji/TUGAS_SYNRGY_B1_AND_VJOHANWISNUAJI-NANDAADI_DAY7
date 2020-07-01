@@ -41,7 +41,7 @@ open class ATM(saldo:Int) {
             println("============================================================================")
         }
         else {
-            this.sisasaldo = sisasaldo + jumlah
+            this.sisasaldo = sisasaldo - jumlah
             println("Uang yang anda tarik adalah sebesar ${numberFormat.format(jumlah).toString()}")
             println("Saldo anda menjadi ${numberFormat.format(sisasaldo).toString()}")
             println("============================================================================")

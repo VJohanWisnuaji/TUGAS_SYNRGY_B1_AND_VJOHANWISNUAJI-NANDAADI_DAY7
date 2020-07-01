@@ -1,7 +1,6 @@
 import java.util.*
 
 fun main() {
-
     print("Please input password: ")
     val inputPin:String = readLine()!!
     println("------------------------")
@@ -11,7 +10,10 @@ fun main() {
 
 
 fun atm(saldo: Int) {
+
     val atm = ATM(saldo)
+    val setoran = Setoran(saldo)
+    val tarikan = Tarikan(saldo)
     println(" ")
     println("------------------------------")
     println("     == LIST MENU ATM  ==")
@@ -26,9 +28,9 @@ fun atm(saldo: Int) {
     val inputMenu: String = readLine()!!
 
     fun selesai() {
-        println("Apakah anda ingin melanjutkan menggunakan ATM? (Yes/No) ")
+        println("Apakah anda sudah selesai? (Yes/No) ")
         val checkNextStudy: String = readLine()!!
-        if (checkNextStudy == "Yes") {
+        if (checkNextStudy == "No") {
             return atm(atm.sisasaldo)
         } else {
             println("-----  ---------------------------------  -----")
@@ -58,20 +60,26 @@ fun atm(saldo: Int) {
                 println("Apakah nominal yang anda masukkan sudah tepat? (Yes/No) ")
                 val checkAns: String = readLine()!!
                 if (checkAns == "Yes") {
-                    return atm.tarik(Tarik)
+                    return tarikan.tarik(Tarik)
                 } else {
                     tarik()
                 }
             }
 
             tarik()
-            selesai()
+            println("Apakah anda ingin melanjutkan menggunakan ATM? (Yes/No) ")
+            val checkNextStudy: String = readLine()!!
+            if (checkNextStudy == "Yes") {
+                return atm(tarikan.sisasaldo)
+            } else {
+                selesai()
+            }
         }
         "C" -> {
             println("-------------------------")
             println("-------Setor Tunai-------")
 
-            fun setor() {
+            fun setor2() {
                 println("-------------------------")
                 println("Masukkan nominal setoran anda")
                 val Setor = Scanner(System.`in`).nextInt()
@@ -79,14 +87,20 @@ fun atm(saldo: Int) {
                 println("Apakah nominal yang anda masukkan sudah tepat? (Yes/No) ")
                 val checkAns: String = readLine()!!
                 if (checkAns == "Yes") {
-                    return atm.setor(Setor)
+                    return setoran.setor(Setor)
                 } else {
-                    setor()
+                    setor2()
                 }
             }
 
-            setor()
-            selesai()
+            setor2()
+            println("Apakah anda ingin melanjutkan menggunakan ATM? (Yes/No) ")
+            val checkNextStudy: String = readLine()!!
+            if (checkNextStudy == "Yes") {
+                return atm(setoran.sisasaldo)
+            } else {
+                selesai()
+            }
         }
         "D" -> {
             println("-------------------------")

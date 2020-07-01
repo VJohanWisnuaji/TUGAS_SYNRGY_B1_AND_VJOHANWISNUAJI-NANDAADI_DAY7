@@ -1,32 +1,12 @@
 import java.util.*
 
 fun main() {
+
     print("Please input password: ")
     val inputPin:String = readLine()!!
     println("------------------------")
     val checkpin = checkPIN(inputPin)
     checkpin.checkPin()
-
-//    fun checkPin(inputPin: String) {
-//        if (inputPin == "") {
-//            println("Mohon isi PIN")
-//        } else {
-//            if (inputPin.length != 6) {
-//                println("Panjang PIN salah")
-//                return main()
-//            } else {
-//                if (inputPin != "123456") {
-//                    println("PIN salah")
-//                    return main()
-//                } else {
-//                    atm(500000)
-//                }
-//            }
-//        }
-//    }
-//
-//    checkPin(inputPin)
-
 }
 
 
@@ -138,5 +118,5 @@ fun atm(saldo: Int) {
         }
     }
 
-
 }
+

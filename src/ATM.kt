@@ -1,4 +1,4 @@
-open class ATM(var saldo:Int=500000) {
+open class ATM(var saldo:Int= 500000) {
 
     fun tabung(jumlah:Int){
         var sisa:Int = jumlah%50000

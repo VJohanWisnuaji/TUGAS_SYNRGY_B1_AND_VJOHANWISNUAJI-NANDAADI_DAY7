@@ -44,14 +44,15 @@ fun atm() {
 
     when (inputMenu) {
         "A" -> {
-            println("-------------------------===")
-            println("-----===CEK SALDO-----===")
-            println("-------------------------===")
+            println("-------------------------")
+            println("--------CEK SALDO--------")
+            println("-------------------------")
 
             var saldo = ATM().saldo
-            var separator = saldo/1000
-            println("Saldo pada ATM anda adalah Rp. ${saldo}")
+            var nomina = Nominal(saldo)
 
+            print("Saldo pada ATM anda adalah ")
+            nomina.fungsiRibuan()
 
             println("Kembali ke menu?? (Yes/No) ")
             val checkNextStudy: String = readLine()!!

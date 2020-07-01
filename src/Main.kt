@@ -2,12 +2,11 @@ import java.util.*
 
 fun main() {
     print("Please input password: ")
-    val inputPin:String = readLine()!!
+    val inputPin: String = readLine()!!
     println("------------------------")
     val checkpin = checkPIN(inputPin)
     checkpin.checkPin()
 }
-
 
 fun atm(saldo: Int) {
 
@@ -28,9 +27,9 @@ fun atm(saldo: Int) {
     val inputMenu: String = readLine()!!
 
     fun selesai() {
-        println("Apakah anda sudah selesai? (Yes/No) ")
+        println("Apakah anda ingin kembali? (Yes/No) ")
         val checkNextStudy: String = readLine()!!
-        if (checkNextStudy == "No") {
+        if (checkNextStudy == "Yes") {
             return atm(atm.sisasaldo)
         } else {
             println("-----  ---------------------------------  -----")
@@ -109,21 +108,28 @@ fun atm(saldo: Int) {
             fun gantipass() {
                 println("-------------------------")
                 println("Masukkan password anda")
-                val passlama:String = readLine()!!
+                val passlama: String = readLine()!!
                 println("Masukkan password baru anda")
-                val passbaru:String = readLine()!!
+                val passbaru: String = readLine()!!
 
                 println("Apakah data yang anda masukkan sudah tepat? (Yes/No) ")
                 val checkAns: String = readLine()!!
                 if (checkAns == "Yes") {
-                    checkPIN(passbaru,passlama)
+                    checkPIN(passbaru, passlama)
                 } else {
                     gantipass()
                 }
             }
 
             gantipass()
-            main()
+
+            println("Apakah anda ingin melanjutkan menggunakan ATM? (Yes/No) ")
+            val checkNextStudy: String = readLine()!!
+            if (checkNextStudy == "Yes") {
+                return atm(setoran.sisasaldo)
+            } else {
+                selesai()
+            }
         }
         "E" -> selesai()
         else -> {

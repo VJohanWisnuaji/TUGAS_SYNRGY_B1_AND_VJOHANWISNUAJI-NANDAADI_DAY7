@@ -1,13 +1,13 @@
-class checkPIN(var inputPin:String = "") {
+class checkPIN(var inputPin: String = "") {
     var newPass = "123456"
 
-    constructor(newPass:String,inputPin:String) : this(inputPin){
-        if (inputPin == this.newPass) {
-            this.newPass=newPass
-        } else if (inputPin.length != 6) {
-            println("Panjang PIN salah")
-        }
-        else {
+    constructor(Pass: String, inputPin: String) : this(inputPin) {
+        if (Pass.length != 6) {
+            println("Panjang PIN harus 6 digit")
+        } else if (inputPin == this.newPass) {
+            println("PIN berhasil diganti")
+            this.newPass = Pass
+        } else {
             println("Password yang anda masukkan salah")
         }
     }

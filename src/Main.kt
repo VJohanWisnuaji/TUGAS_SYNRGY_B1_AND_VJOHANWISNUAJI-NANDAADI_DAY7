@@ -1,7 +1,7 @@
 import java.util.*
 
 fun main() {
-    print("Please input password: ")
+    print("Please input PIN: ")
     val inputPin: String = readLine()!!
     println("------------------------")
     val checkpin = checkPIN(inputPin)
@@ -103,7 +103,7 @@ fun atm(saldo: Int) {
         }
         "D" -> {
             println("-------------------------")
-            println("------Ganti Password-----")
+            println("--------Ganti PIN--------")
 
             fun gantipass() {
                 println("-------------------------")

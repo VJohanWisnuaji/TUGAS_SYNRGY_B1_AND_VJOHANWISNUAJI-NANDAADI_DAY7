@@ -2,36 +2,35 @@ import java.util.*
 
 fun main() {
     print("Please input password: ")
-    val inputPin: String = readLine()!!
+    val inputPin:String = readLine()!!
     println("------------------------")
+    val checkpin = checkPIN(inputPin)
+    checkpin.checkPin()
 
-
-
-    fun checkPin(inputPin: String) {
-        if (inputPin == "") {
-            println("Mohon isi PIN")
-        } else {
-            if (inputPin.length != 6) {
-                println("Panjang PIN salah")
-                return main()
-            } else {
-                if (inputPin != "123456") {
-                    println("PIN salah")
-                    return main()
-                } else {
-                    atm(500000)
-                }
-            }
-        }
-    }
-
-    checkPin(inputPin)
+//    fun checkPin(inputPin: String) {
+//        if (inputPin == "") {
+//            println("Mohon isi PIN")
+//        } else {
+//            if (inputPin.length != 6) {
+//                println("Panjang PIN salah")
+//                return main()
+//            } else {
+//                if (inputPin != "123456") {
+//                    println("PIN salah")
+//                    return main()
+//                } else {
+//                    atm(500000)
+//                }
+//            }
+//        }
+//    }
+//
+//    checkPin(inputPin)
 
 }
 
 
 fun atm(saldo: Int) {
-
     val atm = ATM(saldo)
     println(" ")
     println("------------------------------")
@@ -40,8 +39,9 @@ fun atm(saldo: Int) {
     println("A. Cek Saldo")
     println("B. Tarik Tunai")
     println("C. Setor Tunai")
-    println("D. Selesai")
-    println("Note: tulis A,B,C, atau D untuk memilih menu")
+    println("D. Ganti Password")
+    println("E. Selesai")
+    println("Note: tulis A,B,C,D atau E untuk memilih menu")
     print("Masukkan pilihan menu: ")
     val inputMenu: String = readLine()!!
 
@@ -108,7 +108,30 @@ fun atm(saldo: Int) {
             setor()
             selesai()
         }
-        "D" -> selesai()
+        "D" -> {
+            println("-------------------------")
+            println("------Ganti Password-----")
+
+            fun gantipass() {
+                println("-------------------------")
+                println("Masukkan password anda")
+                val passlama:String = readLine()!!
+                println("Masukkan password baru anda")
+                val passbaru:String = readLine()!!
+
+                println("Apakah data yang anda masukkan sudah tepat? (Yes/No) ")
+                val checkAns: String = readLine()!!
+                if (checkAns == "Yes") {
+                    checkPIN(passbaru,passlama)
+                } else {
+                    gantipass()
+                }
+            }
+
+            gantipass()
+            main()
+        }
+        "E" -> selesai()
         else -> {
             println(" Check note untuk cara memilih menu!")
             return atm(atm.sisasaldo)

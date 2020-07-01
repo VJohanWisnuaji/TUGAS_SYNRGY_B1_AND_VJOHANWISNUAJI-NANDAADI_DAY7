@@ -1,9 +1,10 @@
+import java.util.*
+
 fun main() {
+
     print("Please input password: ")
-    var inputPin: String = readLine()!!
+    val inputPin: String = readLine()!!
     println("------------------------")
-
-
 
     fun checkPin(inputPin: String) {
         if (inputPin == "") {
@@ -17,7 +18,7 @@ fun main() {
                     println("PIN salah")
                     return main()
                 } else {
-                    atm()
+                    atm(500000)
                 }
             }
         }
@@ -27,8 +28,8 @@ fun main() {
 
 }
 
-fun atm() {
-    val atm = ATM()
+fun atm(saldo:Int) {
+    val atm = ATM(saldo)
     println(" ")
     println("------------------------------")
     println("== LIST MENU ATM  ==")
@@ -39,24 +40,21 @@ fun atm() {
     println("D. Selesai")
     println("Note: tulis A,B,C untuk memilih menu")
     print("Masukkan pilihan menu: ")
-    var inputMenu: String = readLine()!!
+    val inputMenu: String = readLine()!!
 
 
     when (inputMenu) {
         "A" -> {
-            println("-------------------------===")
-            println("-----===CEK SALDO-----===")
-            println("-------------------------===")
+            println("-------------------------")
+            println("--------CEK SALDO--------")
+            println("-------------------------")
 
-            var saldo = ATM().saldo
-            var separator = saldo/1000
-            println("Saldo pada ATM anda adalah Rp. ${saldo}")
-
+            atm.ceksaldo()
 
             println("Kembali ke menu?? (Yes/No) ")
             val checkNextStudy: String = readLine()!!
             if (checkNextStudy == "Yes") {
-                return atm()
+                return atm(atm.sisasaldo)
             } else {
                 println("-----  ---------------------------------  -----")
                 println("-----  Terimakasih sudah menggunakan ATM  -----")
@@ -64,27 +62,17 @@ fun atm() {
             }
         }
         "B" -> {
-//                println("-------------------------===")
-//                menuCallculator.casePengurangan()
-//                println("-------------------------===")
-//
-//                val calc = JenisPerhitungan()
-//                val pengurangan = Pengurangan(userInputX = 0.0, userInputY= 0.0)
-//
-//                print(" userInput X: ")
-//                pengurangan.userInputX = Scanner(System.`in`).nextDouble()
-//
-//                print(" userInput y: ")
-//                pengurangan.userInputY = Scanner(System.`in`).nextDouble()
-//
-//
-//                calc.penguranganFunction()
-//                pengurangan.penguranganFunction()
+            println("-------------------------")
+            println("-------Tarik Tunai-------")
+            println("-------------------------")
+            println("Masukkan nominal penarikan anda")
+            val Tarik = Scanner(System.`in`).nextInt()
+            atm.tarik(Tarik)
 
             println("Kembali ke menu?? (Yes/No) ")
             val checkNextStudy: String = readLine()!!
             if (checkNextStudy == "Yes") {
-                return atm()
+                return atm(atm.sisasaldo)
             } else {
                 println("-----  ---------------------------------  -----")
                 println("-----  Terimakasih sudah menggunakan ATM  -----")
@@ -92,27 +80,17 @@ fun atm() {
             }
         }
         "C" -> {
-//                println("-------------------------===")
-//                menuCallculator.casePerkalian()
-//                println("-------------------------===")
-//
-//                val calc = JenisPerhitungan()
-//                val perkalian = Perkalian(userInputX = 0.0, userInputY= 0.0)
-//
-//                print(" userInput X: ")
-//                perkalian.userInputX = Scanner(System.`in`).nextDouble()
-//
-//                print(" userInput y: ")
-//                perkalian.userInputY = Scanner(System.`in`).nextDouble()
-//
-//
-//                calc.perkalianFunction()
-//                perkalian.perkalianFunction()
+            println("-------------------------")
+            println("-------Setor Tunai-------")
+            println("-------------------------")
+            println("Masukkan nominal setoran anda")
+            val Setor = Scanner(System.`in`).nextInt()
+            atm.setor(Setor)
 
             println("Kembali ke menu?? (Yes/No) ")
             val checkNextStudy: String = readLine()!!
             if (checkNextStudy == "Yes") {
-                return atm()
+                return atm(atm.sisasaldo)
             } else {
                 println("-----  ---------------------------------  -----")
                 println("-----  Terimakasih sudah menggunakan ATM  -----")
@@ -126,7 +104,7 @@ fun atm() {
         }
         else -> {
             println(" Check note untuk cara memilih menu!")
-            return atm()
+            return atm(atm.sisasaldo)
         }
     }
 

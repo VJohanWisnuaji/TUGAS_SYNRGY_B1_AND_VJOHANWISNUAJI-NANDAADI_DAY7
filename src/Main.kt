@@ -1,11 +1,7 @@
 import java.util.*
 
 fun main() {
-    print("Please input password: ")
-    val inputPin:String = readLine()!!
-    println("------------------------")
-    val checkpin = checkPIN(inputPin)
-    checkpin.checkPin()
+login()
 
 //    fun checkPin(inputPin: String) {
 //        if (inputPin == "") {
@@ -26,7 +22,14 @@ fun main() {
 //    }
 //
 //    checkPin(inputPin)
+}
 
+fun login(newpass: String = "123456"){
+    val checkpin =checkPIN(newpass, 1)
+    print("Please input password: ")
+    val inputPin:String = readLine()!!
+    println("------------------------")
+    checkpin.checkPin(inputPin)
 }
 
 
@@ -111,25 +114,13 @@ fun atm(saldo: Int) {
         "D" -> {
             println("-------------------------")
             println("------Ganti Password-----")
-
-            fun gantipass() {
-                println("-------------------------")
-                println("Masukkan password anda")
-                val passlama:String = readLine()!!
-                println("Masukkan password baru anda")
-                val passbaru:String = readLine()!!
-
-                println("Apakah data yang anda masukkan sudah tepat? (Yes/No) ")
-                val checkAns: String = readLine()!!
-                if (checkAns == "Yes") {
-                    checkPIN(passbaru,passlama)
-                } else {
-                    gantipass()
-                }
-            }
-
-            gantipass()
-            main()
+            println("-------------------------")
+            println("Masukkan password anda")
+            val passlama:String = readLine()!!
+            println("Masukkan password baru anda")
+            val passbaru:String = readLine()!!
+            val gantipass = checkPIN(passbaru,passlama)
+            login(gantipass.newPass)
         }
         "E" -> selesai()
         else -> {
